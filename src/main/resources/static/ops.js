@@ -1,4 +1,7 @@
-
+function reloadAndView(){
+    window.location.reload();
+    document.getElementById("viewall").click();
+}
 function getAllUsers() {
     fetch('http://localhost:8080/alluser', {
         method: 'GET',
@@ -46,6 +49,7 @@ function addUser() {
     .catch(function(res){
         alert(JSON.stringify(newuser))
     });
+    reloadAndView();
 }
 function updateUser() {
     var uid = document.getElementById("id").value;

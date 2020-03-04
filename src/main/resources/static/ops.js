@@ -97,6 +97,7 @@ function addUser() {
 function updateUser() {
     var uid = document.getElementById("id").value;
     var uname = document.getElementById("name").value;
+    console.log("id",uid);
     var newuser = {
         id: uid,
         name: uname
@@ -144,6 +145,15 @@ function deleteUser(id) {
     //var uid = document.getElementById("id").value;
     var uid = id;
     fetch('http://localhost:8080/delete/'+uid, {
+        method: 'DELETE'
+        })
+        .then(function(){
+            getAllUsers();  
+        });
+}
+
+function deleteAllUsers() {
+    fetch('http://localhost:8080/deleteall/', {
         method: 'DELETE'
         })
         .then(function(){

@@ -1,7 +1,6 @@
 package com.kgisl.raja.lms.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.kgisl.raja.lms.model.User;
 import com.kgisl.raja.lms.repository.UserRepository;
@@ -50,5 +49,9 @@ public class UserController {
     public void deleteUser(@PathVariable(value = "id") Long id){
         userRepository.deleteById(id);
 
+    }
+    @DeleteMapping(value = "/deleteall")
+    public void deleteAllUsers(){
+        userRepository.deleteAll();
     }
 }

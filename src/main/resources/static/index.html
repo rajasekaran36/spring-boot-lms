@@ -13,7 +13,7 @@
     </style>
 </head>
 
-<body>
+<body onload="getAllUsers()">
     <h3>Spring Boot Web Api</h3>
         <table>
             <tr>
@@ -34,17 +34,7 @@
             </tr>
         </table>
         <hr>
-        <table id="userdata">
-            <thead>
-                <tr>
-                    <th>userid</th>
-                    <th>username</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
+        <p id="box"></p>
     <script src="ops.js">
     </script>
 </body>

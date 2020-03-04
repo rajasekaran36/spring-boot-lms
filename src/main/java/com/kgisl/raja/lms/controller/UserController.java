@@ -30,6 +30,10 @@ public class UserController {
         return new ResponseEntity<List<User>>(userRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/get/{id}")
+    public @ResponseBody ResponseEntity<User> getUserById(@PathVariable(value = "id") Long id){
+        return new ResponseEntity<User>(userRepository.findById(id).get(),HttpStatus.OK);
+    }
     @PostMapping(value = "/adduser", headers = "Accept=application/json")
     public @ResponseBody ResponseEntity<User> addUser(@RequestBody User aUser) {
         return new ResponseEntity<User>(userRepository.save(aUser), HttpStatus.CREATED);

@@ -6,33 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        table#userdata{
-            border: 1px solid black;
-        }
-    </style>
+    <link rel="stylesheet" href="css/opsstyle.css">
 </head>
 
 <body onload="getAllUsers()">
     <h3>Spring Boot Web Api</h3>
         <table>
             <tr>
-                <td>User ID:</td>
+                <td><label class="label danger">User ID: </label></td>
                 <td><input type="text" id="id"></td>
             </tr>
             <tr>
-                <td>User Name:</td>
+                <td><label class="label danger">User Name: </label class="label"></td>
                 <td><input type="text" id="name"></td>
             </tr>
             <tr>    
-                <td><button id ='add' onclick="addUser()">Add User</button><br></td>
-                <td><button id ='delete' onclick="deleteAllUsers()">Delete All  </button><br></td>
+                <td><button class ="button" id ='add' onclick="addUser()">Add User</button><br></td>
+                <td><button class ="button" id ='delete' onclick="deleteAllUsers()">Delete All  </button><br></td>
             </tr>
         </table>
         <hr>
-        <p id="box"></p>
+        <table id="customers"></table>
         
-    <script src="ops.js">
+    <script src="scripts/ops.js">
     </script>
 </body>
 

@@ -38,20 +38,20 @@ function displayAsTable(result){
 function displayAsTableWithOptions(result){
     var html = "";
     var i;
-    html = html+"<table>";
+    //html = html+"<table>";
     html = html+"<tr>";
-    html = html+"<th>ID</th><th>Username</th>";
+    html = html+"<th>ID</th><th>Username</th><th>Edit</th><th>Delete</th>";
     html = html+"</tr>";
     for(i=0;i<result.length;i++){
         html = html+"<tr>";
         html = html+"<td>"+result[i].id+"</td>";
         html = html+"<td>"+result[i].name+"</td>";
-        html = html+"<td><button id='u"+result[i].id+"'onclick='loadDataUsingId("+result[i].id+")'>Edit</button></td>";
-        html = html+"<td><button id='"+result[i].id+"'onclick='deleteUser(this.id)'>Delete</button></td>";
+        html = html+"<td><button class ='button ' id='u"+result[i].id+"'onclick='loadDataUsingId("+result[i].id+")'>Edit</button></td>";
+        html = html+"<td><button class ='button mod' id='"+result[i].id+"'onclick='deleteUser(this.id)'>Delete</button></td>";
         html = html+"<tr>";
     }
-    html = html+"</table>";
-    document.getElementById("box").innerHTML = html;
+    //html = html+"</table>";
+    document.getElementById("customers").innerHTML = html;
 }
 function getAllUsers() {
     fetch('http://localhost:8080/alluser', {

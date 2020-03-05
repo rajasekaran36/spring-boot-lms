@@ -54,7 +54,7 @@ function displayAsTableWithOptions(result){
     document.getElementById("customers").innerHTML = html;
 }
 function getAllUsers() {
-    fetch('http://localhost:8080/alluser', {
+    fetch('http://172.25.40.20:8080/alluser', {
         method: 'GET',
     })
         .then((response) => response.json()
@@ -77,7 +77,7 @@ function addUser() {
         id: uid,
         name: uname
     }
-    fetch('http://localhost:8080/adduser', {
+    fetch('http://172.25.40.20:8080/adduser', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -102,7 +102,7 @@ function updateUser() {
         id: uid,
         name: uname
     }
-    fetch('http://localhost:8080/put', {
+    fetch('http://172.25.40.20:8080/put', {
         method: 'PUT',
         headers: {
             'Accept': 'application/json',
@@ -123,7 +123,7 @@ function updateUser() {
 
 function loadDataUsingId(uid){
     
-    fetch('http://localhost:8080/get/'+uid, {
+    fetch('http://172.25.40.20:8080/get/'+uid, {
         method: 'GET'
         })
         .then(function(res){
@@ -144,7 +144,7 @@ function loadDataUsingId(uid){
 function deleteUser(id) {
     //var uid = document.getElementById("id").value;
     var uid = id;
-    fetch('http://localhost:8080/delete/'+uid, {
+    fetch('http://172.25.40.20:8080/delete/'+uid, {
         method: 'DELETE'
         })
         .then(function(){
@@ -153,7 +153,7 @@ function deleteUser(id) {
 }
 
 function deleteAllUsers() {
-    fetch('http://localhost:8080/deleteall/', {
+    fetch('http://172.25.40.20:8080/deleteall/', {
         method: 'DELETE'
         })
         .then(function(){

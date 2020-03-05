@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*")
-@RestController("/")
+@RestController
 public class UserController {
     @Autowired
     private UserRepository userRepository;

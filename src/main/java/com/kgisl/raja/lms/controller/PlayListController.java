@@ -1,6 +1,9 @@
 package com.kgisl.raja.lms.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import com.kgisl.raja.lms.model.PlayList;
 import com.kgisl.raja.lms.repository.PlayListRepository;
@@ -33,6 +36,8 @@ public class PlayListController {
     public @ResponseBody ResponseEntity<PlayList> getPlayListById(@PathVariable(value = "id") Long id){
         return new ResponseEntity<PlayList>(playListRepository.findById(id).get(),HttpStatus.OK);
     }
+
+    
     @PostMapping(value = "/api/playlist/add", headers = "Accept=application/json")
     public @ResponseBody ResponseEntity<PlayList> addPlayList(@RequestBody PlayList playList) {
         return new ResponseEntity<PlayList>(playListRepository.save(playList), HttpStatus.CREATED);
@@ -52,5 +57,20 @@ public class PlayListController {
     @DeleteMapping(value = "/api/playlist/deleteall")
     public void deleteAllPlayList(){
         playListRepository.deleteAll();
+    }
+
+    //LR process
+
+    @GetMapping(value = "/api/playlist/getlrs/{id}")
+    public @ResponseBody ResponseEntity<List<Long>> getAllLearningResourcesPlayListById(@PathVariable(value = "id") Long plId){
+        List<Long> lrs = new ArrayList<Long>();
+
+        lrs = playListRepository.findAll().stream().filter((curList)->curList.getPlayListId()==plId).map(PlayList::getLearningResourceId).collect(Collectors.toList());
+
+        return new ResponseEntity<List<Long>>(lrs,HttpStatus.OK);
+    }
+
+    public PlayList getPlayListByIdLocal(Long id){
+        return playListRepository.findById(id).get();
     }
 }

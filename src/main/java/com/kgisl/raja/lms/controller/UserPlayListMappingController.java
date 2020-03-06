@@ -1,7 +1,10 @@
 package com.kgisl.raja.lms.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.kgisl.raja.lms.model.PlayList;
 import com.kgisl.raja.lms.model.UserPlayListMapping;
 import com.kgisl.raja.lms.repository.UserPlayListMappingRepository;
 
@@ -21,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 @RestController
 public class UserPlayListMappingController{
+    @Autowired
+    private PlayListController playListController;
     @Autowired
     private UserPlayListMappingRepository userPlayListMappingRepository;
 
@@ -53,4 +58,18 @@ public class UserPlayListMappingController{
     public void deleteAllUserPlayListMapping(){
         userPlayListMappingRepository.deleteAll();
     }
+
+
+    //playlistbyuser
+
+    /* @GetMapping(value = "/api/userplaylistmapping/getplaylists/{userid}")
+    public @ResponseBody ResponseEntity<PlayList> getUserPlayListMappingById(@PathVariable(value = "id") Long userId){
+        List<Long> userSpecificPlaylistId = userPlayListMappingRepository.findAll().stream().filter((curMapping)->curMapping.getUserID()==userId).map(UserPlayListMapping::getPlayListID).collect(Collectors.toList());
+        List<ResponseEntity<PlayList>> listOfPlaylist = new ArrayList<ResponseEntity<PlayList>>();
+        
+        for(Long curPlayListId:userSpecificPlaylistId){
+            listOfPlaylist.add(playListController.getPlayListById(curPlayListId));
+        }
+        return new ResponseEntity<UserPlayListMapping>(userPlayListMappingRepository.findById(id).get(),HttpStatus.OK);
+    } */
 }

@@ -62,14 +62,10 @@ public class UserPlayListMappingController{
 
     //playlistbyuser
 
-    /* @GetMapping(value = "/api/userplaylistmapping/getplaylists/{userid}")
-    public @ResponseBody ResponseEntity<PlayList> getUserPlayListMappingById(@PathVariable(value = "id") Long userId){
+    @GetMapping(value = "/api/userplaylistmapping/getplaylistids/{id}")
+    public @ResponseBody ResponseEntity<List<Long>> getUserPlayListIDsfromUserID(@PathVariable(value = "id") Long userId){
         List<Long> userSpecificPlaylistId = userPlayListMappingRepository.findAll().stream().filter((curMapping)->curMapping.getUserID()==userId).map(UserPlayListMapping::getPlayListID).collect(Collectors.toList());
-        List<ResponseEntity<PlayList>> listOfPlaylist = new ArrayList<ResponseEntity<PlayList>>();
         
-        for(Long curPlayListId:userSpecificPlaylistId){
-            listOfPlaylist.add(playListController.getPlayListById(curPlayListId));
-        }
-        return new ResponseEntity<UserPlayListMapping>(userPlayListMappingRepository.findById(id).get(),HttpStatus.OK);
-    } */
+        return new ResponseEntity<List<Long>>(userSpecificPlaylistId,HttpStatus.OK);
+    } 
 }

@@ -65,7 +65,7 @@ function getAllUsers() {
             console.log('Success:', result);
         })
         .catch((error) => {
-            console.error('Error:', error);
+         f   console.error('Error:', error);
         });
         
 }

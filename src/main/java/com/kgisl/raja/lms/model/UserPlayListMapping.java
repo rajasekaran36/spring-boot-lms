@@ -6,18 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 @Entity
-public class PlayList{
+public class UserPlayListMapping {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
-    private Long playListId;
-    private Long learningResourceId;
+    private Long userID;
+    private Long playListID;
 
-    PlayList(){}
-
+    UserPlayListMapping(){}
 
     public Long getId() {
         return this.id;
@@ -27,20 +25,20 @@ public class PlayList{
         this.id = id;
     }
 
-    public Long getPlayListId() {
-        return this.playListId;
+    public Long getUserID() {
+        return this.userID;
     }
 
-    public void setPlayListId(Long playListId) {
-        this.playListId = playListId;
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 
-    public Long getLearningResourceId() {
-        return this.learningResourceId;
+    public Long getPlayListID() {
+        return this.playListID;
     }
 
-    public void setLearningResourceId(Long learningResourceId) {
-        this.learningResourceId = learningResourceId;
+    public void setPlayListID(Long playListID) {
+        this.playListID = playListID;
     }
 
 }

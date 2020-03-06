@@ -25,32 +25,32 @@ public class PlayListController {
     private PlayListRepository playListRepository;
 
     @GetMapping("/api/playlist/getall")
-    public @ResponseBody ResponseEntity<List<PlayList>> all() {
+    public @ResponseBody ResponseEntity<List<PlayList>> getAllPlayList() {
         return new ResponseEntity<List<PlayList>>(playListRepository.findAll(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/api/playlist/get/{id}")
-    public @ResponseBody ResponseEntity<PlayList> getUserById(@PathVariable(value = "id") Long id){
+    public @ResponseBody ResponseEntity<PlayList> getPlayListById(@PathVariable(value = "id") Long id){
         return new ResponseEntity<PlayList>(playListRepository.findById(id).get(),HttpStatus.OK);
     }
     @PostMapping(value = "/api/playlist/add", headers = "Accept=application/json")
-    public @ResponseBody ResponseEntity<PlayList> addUser(@RequestBody PlayList aUser) {
-        return new ResponseEntity<PlayList>(playListRepository.save(aUser), HttpStatus.CREATED);
+    public @ResponseBody ResponseEntity<PlayList> addPlayList(@RequestBody PlayList playList) {
+        return new ResponseEntity<PlayList>(playListRepository.save(playList), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/api/playlist/put", headers = "Accept=application/json")
-    public @ResponseBody ResponseEntity<PlayList> updateUser(@RequestBody PlayList aUser){
-        PlayList x = playListRepository.findById(aUser.getId()).get();
-        return new ResponseEntity<PlayList>(playListRepository.save(aUser),HttpStatus.ACCEPTED);
+    public @ResponseBody ResponseEntity<PlayList> updatePlayList(@RequestBody PlayList playList){
+        PlayList x = playListRepository.findById(playList.getId()).get();
+        return new ResponseEntity<PlayList>(playListRepository.save(playList),HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping(value = "/api/playlist/delete/{id}")
-    public void deleteUser(@PathVariable(value = "id") Long id){
+    public void deletePlayList(@PathVariable(value = "id") Long id){
         playListRepository.deleteById(id);
 
     }
     @DeleteMapping(value = "/api/playlist/deleteall")
-    public void deleteAllUsers(){
+    public void deleteAllPlayList(){
         playListRepository.deleteAll();
     }
 }

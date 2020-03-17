@@ -50,6 +50,7 @@ public class UserController {
         userRepository.deleteById(id);
 
     }
+    //Delete mapping
     @DeleteMapping(value = "/deleteall")
     public void deleteAllUsers(){
         userRepository.deleteAll();
